@@ -1,8 +1,17 @@
-YUIMetroTester
-==============
+Metro Tester Windows 8 App
+==========================
 
-YUIMetroTester is a sample WinJS project with YUI3. It was made to help run YUI3 unit tests in the WinJS enviroment. 
-It does this by using a packaged version of yui3 inside the project's js/ directory.
+Metro Tester is a native WinJS app that is meant to be run in Windows 8. We use it within the YUI team to run YUI unit tests in Windows 8, specifically in the WinJS environment. 
+
+It does this in the following manner:
+
+- Cloning a version of yui3 in the js/ directory
+- Iterating through the `yui3/` directory and creating an array of all unit test `.html` files
+- Looping through all unit test files, using `WinJS.Navigation.navigate()` to move from file to file.
+- Modifying YUI Test (`test.js`) to listen to test events and storing results for each test in Local Storage.
+- Reading from local storage once all unit test files have been read.
+
+We don't use iframes for testing because [there are some differences](http://msdn.microsoft.com/en-us/library/windows/apps/hh465373.aspx) in what's allowed in the WinJS runtime vs. a web runtime.
 
 Setting up
 ----------
